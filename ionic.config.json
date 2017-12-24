@@ -1,0 +1,8 @@
+{
+  "name": "NXVision",
+  "app_id": "c82bddb5",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
