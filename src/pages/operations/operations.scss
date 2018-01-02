@@ -1,0 +1,117 @@
+page-operations 
+{
+	#operationsBody
+	{
+		background: linear-gradient(to left top, #ecdfb4, rgb(255,255,255));
+	}
+
+	.contentApp
+	{
+		margin-top: 2% !important;
+	}
+
+	#operationsBody form
+	{
+		max-width: 500px;
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 1%;
+	}
+
+	#operationsBody div
+	{
+		text-align: center;
+	}
+
+	#operationsBody ion-item
+	{
+		box-shadow: 2px 2px 5px #aaa;
+		margin-bottom: 2%;
+	}
+
+	#operationsBody button
+	{
+		margin-top: 5%;
+		width: 60%;
+		margin-right: auto;
+		margin-left: auto;
+		box-shadow: 2px 2px 5px #aaa;
+	}
+
+
+	#choiceOperation
+	{
+		max-width: 700px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#choiceOperation button
+	{
+		width: 100% !important;
+		margin: 0px !important;
+	}
+
+	#choiceOperation ion-item
+	{
+		width: 30%;
+		border: 2px solid rgba(102,204,0,0.9);
+		border-radius: 5px;
+		background-color: rgba(255,255,255,0);
+		color: rgba(102,204,0,0.9);
+		display: inline-block;
+	}
+
+
+	#historyOperations
+	{
+		width: 800px;
+		margin-top: 2%;
+		padding: 5px;
+		background-color: white;
+		width: 100%;
+		font-size: 1.2em; 
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 5px;
+		overflow: hidden;
+		box-shadow: 2px 2px 5px#aaa;
+	}
+
+	#historyOperations th
+	{
+		padding-bottom: 10px;
+		padding-top: 10px;
+		color: white;
+		background-color: rgba(0, 204, 102, 0.8);
+	}
+
+	#historyOperations td
+	{
+		padding-bottom: 5px;
+		padding-top: 5px;
+		/*display: block;*/
+	}
+
+
+
+
+
+	/* ///////////// MOBILE CSS ///////////////////*/
+	@media only screen and (max-width: 1000px)
+	{
+		#choiceOperation ion-item
+		{
+			font-size: 1em;
+			width: 90%;
+		}
+
+		#historyOperations
+		{
+			font-size: 1em; 
+		}
+	}
+
+ 
+
+}

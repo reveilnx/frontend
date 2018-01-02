@@ -1,0 +1,25 @@
+<ion-content padding id="loginBody">
+
+	<!-- LOGIN FORM -->
+	<form [formGroup]="loginForm" padding>
+
+		<div>
+			<ion-item [class.invalid]="!loginForm.controls.telephone.valid && (loginForm.controls.telephone.dirty || submitAttempt)">
+				<ion-input id="telephone" type="tel" placeholder="Téléphone" name="telephone" formControlName="telephone" ></ion-input>
+			</ion-item>
+			<ion-item [class.invalid]="!loginForm.controls.mdp.valid && (loginForm.controls.mdp.dirty || submitAttempt)">
+			    <ion-input type="password" placeholder="Mot de passe" name="mdp" formControlName="mdp" ></ion-input>
+			</ion-item>
+		</div>
+
+		<p padding>
+	    	Recharge gratuite par VISA MASTERCARD CB, sans engagement<br>
+	    	Consultez les <a href="#">conditions d'utilisation</a>
+	    </p>
+
+		<button ion-button block color="secondary"  (click)="loginUser()">Accédez à votre compte</button>
+		<button ion-button block outline color="secondary" (click)="gotoRegister()">Inscrivez-vous gratuitement !</button>
+
+	</form>
+
+</ion-content>

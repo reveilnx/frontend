@@ -1,0 +1,217 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Inscription</ion-title>
+  </ion-navbar>
+
+</ion-header>
+ 
+<ion-content id="registerBody">
+
+	<!-- FORM REGISTER-->
+	<!--<button ion-button (click)="displayWantOpenAfricanCmpt()"></button>-->
+<form [formGroup]="registerForm" >
+		<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////INFORMATIONS PERSO -->
+		<fieldset>
+		<legend ><ion-icon name="person"></ion-icon>Informations Personnelles <span class="requiredInput">* requis</span></legend>
+			<div class="registerFieldsetContent">
+ 
+				<div radio-group name="civilite" formControlName="civilite" [class.invalid]="!registerForm.controls.civilite.valid && (registerForm.controls.civilite.dirty || submitAttempt)">
+					<ion-item class="radioRegister">
+					    <ion-label>M.</ion-label>
+					    <ion-radio value="M"></ion-radio>
+					</ion-item>
+					<ion-item class="radioRegister">
+					    <ion-label>Mme.</ion-label>
+					    <ion-radio value="F"></ion-radio>
+					</ion-item>
+					<!--<ion-item class="radioRegister">
+					    <ion-label>Compte joint</ion-label>
+					    <ion-radio value="J"></ion-radio>
+					</ion-item>
+					<ion-item class="radioRegister">
+					    <ion-label>Autre</ion-label>
+					    <ion-radio value="U"></ion-radio>
+					</ion-item>-->
+				</div>
+ 
+				<ion-item [class.invalid]="!registerForm.controls.nom.valid && (registerForm.controls.nom.dirty || submitAttempt)">
+				   <ion-input type="text" name="nom" formControlName="nom" placeholder="Nom" ></ion-input>
+				</ion-item>
+
+				<ion-item [class.invalid]="!registerForm.controls.prenom.valid && (registerForm.controls.prenom.dirty || submitAttempt)">
+				   <ion-input type="text" name="prenom" formControlName="prenom" placeholder="Prénom" ></ion-input>
+				</ion-item>
+ 
+				<ion-item [class.invalid]="!registerForm.controls.typeClient.valid && (registerForm.controls.typeClient.dirty || submitAttempt)">
+					<ion-label>Identité client</ion-label>
+				    <ion-select (ionChange)="changeDisplayAsso()" name="typeClient" formControlName="typeClient" >
+				    	<ion-option value="C">Particulier</ion-option>
+				    	<ion-option value="A">Association</ion-option>
+				    	<ion-option value="E">Entreprise</ion-option>
+					</ion-select>
+				</ion-item>
+		 
+				<ion-item [class.invalid]="!registerForm.controls.mdp1.valid && (registerForm.controls.mdp1.dirty || submitAttempt)">
+				    <ion-input type="password" name="mdp1" placeholder="Mot de passe" formControlName="mdp1" ></ion-input>
+				</ion-item>
+
+				<ion-item [class.invalid]="!registerForm.controls.mdp2.valid && (registerForm.controls.mdp2.dirty || submitAttempt)">
+				    <ion-input type="password" name="mdp2" placeholder="Confirmer mdp" formControlName="mdp2" ></ion-input>
+				</ion-item>
+  
+				<ion-item [class.invalid]="!registerForm.controls.telephone.valid && (registerForm.controls.telephone.dirty || submitAttempt)">
+				    <ion-input type="tel" id="telephone2" name="telephone" placeholder="Téléphone Mobile" formControlName="telephone" ></ion-input>
+				</ion-item>
+    
+				<ion-item [class.invalid]="!registerForm.controls.email.valid && (registerForm.controls.email.dirty || submitAttempt)">
+				    <ion-input type="email" name="email" placeholder="Email" formControlName="email" ></ion-input>
+				</ion-item>
+
+				<!--<ion-item> 
+				    <ion-datetime displayFormat="DD MMM, YYYY" name="dateNaissance" placeholder="Date de naissance" formControlName="dateNaissance" [class.invalid]="!registerForm.controls.dateNaissance.valid && (registerForm.controls.dateNaissance.dirty || submitAttempt)"></ion-datetime>
+				</ion-item>-->
+  
+				<!--<ion-item>
+					<ion-input ion-datepicker
+						  id="dateNaissanceP"
+						  formControlName="dateNaissance"
+						  name ="dateNaissance"
+						  [class.invalid]="!registerForm.controls.dateNaissance.valid && (registerForm.controls.dateNaissance.dirty || submitAttempt)"
+						  placeholder="Date de naissance"
+						  cancelText="Annuler" 
+						  locale="fr-FR" 
+						  (ionChanged)="dateBornChanged($event)"  
+						  class="ScheduleDate" 
+						></ion-input>
+				</ion-item>-->
+
+				<ion-item [class.invalid]="!registerForm.controls.dateNaissance.valid && (registerForm.controls.dateNaissance.dirty || submitAttempt)">
+					<ion-label>Date de Naissance</ion-label>
+				    <ion-input type="text" name="dateNaissance" placeholder="JJ/MM/AAAA" formControlName="dateNaissance" ></ion-input>
+				</ion-item>
+
+				<ion-item [class.invalid]="!registerForm.controls.lieuNaissance.valid && (registerForm.controls.lieuNaissance.dirty || submitAttempt)">
+				    <ion-input type="text" name="lieuNaissance" placeholder="Commune de naissance" formControlName="lieuNaissance" ></ion-input>
+				</ion-item>
+
+				<ion-item [class.invalid]="!registerForm.controls.nationalite.valid && (registerForm.controls.nationalite.dirty || submitAttempt)">
+					<ion-label>Nationalité</ion-label>
+					<ion-select name="nationalite" formControlName="nationalite" >
+						<ion-option *ngFor="let item of stateISO" value="{{item.code}}" >{{item.name}}</ion-option>
+					</ion-select>
+				</ion-item>
+
+				<h3>Adresse postale</h3>
+				<ion-item showWhen="core">
+					<ion-label>Pays</ion-label>
+					<ion-select  name="pays" formControlName="pays" [class.invalid]="!registerForm.controls.pays.valid && (registerForm.controls.pays.dirty || submitAttempt)">
+						<ion-option *ngFor="let item of stateISO" value="{{item.code}}" >{{item.name}}</ion-option>
+					</ion-select>
+				    <ion-input type="text" name="rue" placeholder="N°, rue" formControlName="rue" [class.invalid]="!registerForm.controls.rue.valid && (registerForm.controls.rue.dirty || submitAttempt)"></ion-input>
+				    <ion-input type="text" name="CP" placeholder="CP" formControlName="CP" [class.invalid]="!registerForm.controls.CP.valid && (registerForm.controls.CP.dirty || submitAttempt)"></ion-input>
+				    <ion-input type="text" name="ville" placeholder="Ville" formControlName="ville" [class.invalid]="!registerForm.controls.ville.valid && (registerForm.controls.ville.dirty || submitAttempt)"></ion-input>
+				</ion-item>
+				<ion-item showWhen="android, ios, windows" [class.invalid]="!registerForm.controls.pays.valid && (registerForm.controls.pays.dirty || submitAttempt)">
+					<ion-label>Pays</ion-label>
+					<ion-select  name="pays" formControlName="pays" >
+						<ion-option *ngFor="let item of stateISO" value="{{item.code}}" >{{item.name}}</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item showWhen="android, ios, windows" [class.invalid]="!registerForm.controls.rue.valid && (registerForm.controls.rue.dirty || submitAttempt)">
+				    <ion-input type="text" name="rue" placeholder="N°, rue" formControlName="rue" ></ion-input>
+				</ion-item>
+				<ion-item showWhen="android, ios, windows" [class.invalid]="!registerForm.controls.CP.valid && (registerForm.controls.CP.dirty || submitAttempt)">
+				    <ion-input type="text" name="CP" placeholder="CP" formControlName="CP" ></ion-input>
+				</ion-item>
+				<ion-item showWhen="android, ios, windows" [class.invalid]="!registerForm.controls.ville.valid && (registerForm.controls.ville.dirty || submitAttempt)">
+				    <ion-input type="text" name="ville" placeholder="Ville" formControlName="ville" ></ion-input>
+				</ion-item>
+			
+				<h3 *ngIf="displayInfoAsso === 'N'">Etes vous membre d'une association ?</h3>
+				<div radio-group name="assoMember" *ngIf="displayInfoAsso === 'N'">
+					<ion-item class="radioRegister">
+					    <ion-label>Oui</ion-label> 
+					    <ion-radio (ionSelect)="displayMembreAsso('O')" value="O"></ion-radio>
+					</ion-item>
+					<ion-item class="radioRegister">
+					    <ion-label>Non</ion-label>
+					    <ion-radio (ionSelect)="displayMembreAsso('N')" value="N" checked="True"></ion-radio>
+					</ion-item>
+				</div>
+				<div *ngIf="assoMember === 'O' && displayInfoAsso === 'N'" [class.invalid]="!registerForm.controls.codeAssoClient.valid && (registerForm.controls.codeAssoClient.dirty || submitAttempt)">
+					<ion-item>
+						<ion-label>Code Association </ion-label>
+					    <ion-select name="codeAssoClient" formControlName="codeAssoClient" >
+					    	<ion-option *ngFor="let item of assoNumbers" value="{{item.id}}" >{{item.nom}}</ion-option>
+						</ion-select>
+					</ion-item>
+					<ion-item [class.invalid]="!registerForm.controls.dateAdhesionAsso.valid && (registerForm.controls.dateAdhesionAsso.dirty || submitAttempt)">
+						<ion-label>Date d'adhésion</ion-label>
+					    <ion-input type="text" name="dateAdhesionAsso" placeholder="JJ/MM/AAAA" formControlName="dateAdhesionAsso" ></ion-input>
+					</ion-item>
+				</div>
+			</div>
+		</fieldset>
+
+
+
+
+
+		<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////INFORMATIONS ASSO -->
+		<fieldset *ngIf="displayInfoAsso === 'O'">
+		<legend ><ion-icon name="cube"></ion-icon>Association / Entreprise <span class="requiredInput">*requis</span></legend>
+
+			<div  class="registerFieldsetContent">
+				<ion-item [class.invalid]="!registerForm.controls.nomAsso.valid && (registerForm.controls.nomAsso.dirty || submitAttempt)">
+				    <ion-input type="text" name="nomAsso" placeholder="Nom Association/Entreprise" formControlName="nomAsso" ></ion-input>
+				</ion-item>
+
+				<ion-item [class.invalid]="!registerForm.controls.SIREN.valid && (registerForm.controls.SIREN.dirty || submitAttempt)">
+				    <ion-input type="text" name="SIRET" placeholder="Identifiant (SIREN, RNA, RCS/RN )" formControlName="SIREN" ></ion-input>
+				</ion-item>
+
+				<ion-item [class.invalid]="!registerForm.controls.site.valid && (registerForm.controls.site.dirty || submitAttempt)">
+				    <ion-input type="text" name="site" placeholder="Site Internet" formControlName="site" ></ion-input>
+				</ion-item>
+
+				<ion-item [class.invalid]="!registerForm.controls.assoDescription.valid && (registerForm.controls.assoDescription.dirty || submitAttempt)">
+					 <ion-input type="text" name="assoDescription" placeholder="Description" formControlName="assoDescription" ></ion-input>
+				</ion-item>
+
+				<h3>Adresse Siège</h3>
+				<ion-item showWhen="core">
+					<ion-label>Pays</ion-label>
+					<ion-select  name="paysAsso" formControlName="paysAsso" [class.invalid]="!registerForm.controls.paysAsso.valid && (registerForm.controls.paysAsso.dirty || submitAttempt)">
+						<ion-option *ngFor="let item of stateISO" value="{{item.code}}" >{{item.name}}</ion-option>
+					</ion-select>
+				    <ion-input type="text" name="rueAsso" placeholder="Numéro et rue" formControlName="rueAsso" [class.invalid]="!registerForm.controls.rueAsso.valid && (registerForm.controls.rueAsso.dirty || submitAttempt)"></ion-input>
+				    <ion-input type="text" name="CPAsso" placeholder="Code postal" formControlName="CPAsso" [class.invalid]="!registerForm.controls.CPAsso.valid && (registerForm.controls.CPAsso.dirty || submitAttempt)"></ion-input>
+				    <ion-input type="text" name="villeAsso" placeholder="Ville" formControlName="villeAsso" [class.invalid]="!registerForm.controls.villeAsso.valid && (registerForm.controls.villeAsso.dirty || submitAttempt)"></ion-input>
+				</ion-item>
+				<ion-item showWhen="android, ios, windows" [class.invalid]="!registerForm.controls.paysAsso.valid && (registerForm.controls.paysAsso.dirty || submitAttempt)">
+					<ion-label>Pays</ion-label>
+					<ion-select  name="paysAsso" formControlName="paysAsso" >
+						<ion-option *ngFor="let item of stateISO" value="{{item.code}}" >{{item.name}}</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item showWhen="android, ios, windows" [class.invalid]="!registerForm.controls.rueAsso.valid && (registerForm.controls.rueAsso.dirty || submitAttempt)">
+					<ion-input type="text" name="rueAsso" placeholder="Numéro et rue" formControlName="rueAsso" ></ion-input>
+				</ion-item>
+				<ion-item showWhen="android, ios, windows" [class.invalid]="!registerForm.controls.CPAsso.valid && (registerForm.controls.CPAsso.dirty || submitAttempt)">
+					<ion-input type="text" name="CPAsso" placeholder="Code postal" formControlName="CPAsso" ></ion-input>
+				</ion-item>
+				<ion-item showWhen="android, ios, windows" [class.invalid]="!registerForm.controls.villeAsso.valid && (registerForm.controls.villeAsso.dirty || submitAttempt)">
+					 <ion-input type="text" name="villeAsso" placeholder="Ville" formControlName="villeAsso" ></ion-input>
+				</ion-item>
+			</div>		
+		</fieldset>
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// SUBMIT -->
+		<button ion-button block color="secondary"  id="submitRegister" (click)="validRegister()" >Valider</button>
+
+
+	</form>
+
+</ion-content>

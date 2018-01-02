@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Gérer mon Wallet</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="walletBody" padding>
+	
+	<!-- CHOICE -->
+	<div radio-group id="choiceMoney" name="choiceMoney" [(ngModel)]="displayMoney">
+				<ion-item>
+				    <ion-label>Recharger Wallet</ion-label>
+				    <ion-radio value="IN"></ion-radio>
+				</ion-item>
+				<ion-item>
+				    <ion-label>Virer à ma banque</ion-label>
+				    <ion-radio value="OUT">easy</ion-radio>
+				</ion-item>
+	</div>
+
+	<section class="contentApp"> 
+
+		<form [formGroup]="walletForm" padding *ngIf="(displayMoney === 'IN' || (displayMoney === 'OUT' && dataClientLocal.IBANfrance != null))">
+
+			<ion-item [class.invalid]="!walletForm.controls.montant.valid && (walletForm.controls.montant.dirty || submitAttempt)">
+				<ion-label>Montant : </ion-label>
+				<ion-input type="text" name="montant" placeholder="XX.XX" formControlName="montant" ></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Libellé : </ion-label>
+				<ion-input type="text" name="montant" formControlName="commentaire" [class.invalid]="!walletForm.controls.commentaire.valid && (walletForm.controls.commentaire.dirty || submitAttempt)"></ion-input>
+			</ion-item>
+
+			<button ion-button block color="secondary" (click)="validTransfer('moneyIn')" *ngIf="displayMoney === 'IN'">Recharger Wallet</button>
+			<button ion-button block color="secondary" (click)="validTransfer('moneyOut')" *ngIf="displayMoney === 'OUT'">Virer à ma banque</button>
+			<!--<h3>NXVision ne prend pas de commission sur les virements<br>Montant maximum autorisé : 1000,00€</h3>-->
+		</form>
+
+		<h2 id="titleIban" *ngIf="displayMoney === 'OUT' && dataClientLocal.IBANfrance == null">Vous n'avez pas encore <br><a (click)="gotoCompte()" href='#'>ajouté vos informations personnelles </a></h2>
+		
+	</section>
+
+</ion-content>
+
+
+
+<ion-footer>
+	<ion-toolbar>
+		<div class="foot"><img src="assets/imgs/walletPNG.png" alt="solde" /><h2>Solde actuel : {{ dataClientLocal.solde }} €</h2></div>
+	</ion-toolbar>
+</ion-footer>

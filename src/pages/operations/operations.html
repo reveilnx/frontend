@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Effectuer une opération</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="operationsBody" padding>
+
+
+	<!-- CHOICE -->
+	<div radio-group id="choiceOperation" name="choiceOperation" (change)="changeOpe()" [(ngModel)]="displayOperation">
+				<ion-item>
+				    <ion-label>Payer</ion-label>
+				    <ion-radio value="PAY"></ion-radio>
+				</ion-item>
+				<!--<ion-item>
+				    <ion-label>Demander</ion-label>
+				    <ion-radio value="ASK"></ion-radio>
+				</ion-item>-->
+	</div>
+
+
+	<section class="contentApp"> 
+
+		<form [formGroup]="operationsForm" padding >
+
+			<ion-item id="appendTel" [class.invalid]="!operationsForm.controls.destinataire.valid && (operationsForm.controls.destinataire.dirty || submitAttempt)">
+				<ion-label >Destinataire : </ion-label>
+				<ion-input type="text" name="montant" id="telephone3" placeholder="Téléphone destinataire" formControlName="destinataire" ></ion-input>
+			</ion-item>
+			<ion-item [class.invalid]="!operationsForm.controls.montant.valid && (operationsForm.controls.montant.dirty || submitAttempt)">
+				<ion-label>Montant : </ion-label>
+				<ion-input type="text" name="montant" placeholder="XX.XX" formControlName="montant" ></ion-input>
+			</ion-item>
+			<ion-item [class.invalid]="!operationsForm.controls.commentaire.valid && (operationsForm.controls.commentaire.dirty || submitAttempt)">
+				<ion-label>Libellé : </ion-label>
+				<ion-input type="text" name="montant" formControlName="commentaire" ></ion-input>
+			</ion-item>
+
+			<button ion-button block color="secondary" (click)="validPayment('pay')" *ngIf="displayOperation === 'PAY'">Payer</button>
+			<button ion-button block color="secondary" (click)="validPayment('ask')" *ngIf="displayOperation === 'ASK'">Demander</button>
+		</form>
+
+		<table  padding id="historyOperations" *ngIf="displayOperation === 'PAY' || displayOperation === 'ASK'">
+			<tr>
+				<th>Somme</th>
+				<th>Type</th>
+				<th>Détail</th>
+				<th>Date</th>
+			</tr>
+			<tr *ngFor="let hist of operationHistory">
+				<td>{{hist.montant}} €</td>
+				<td>{{hist.type}}</td>
+				<td>{{hist.commentaire}}</td>
+				<td>{{hist.data}}</td>
+			</tr>
+		</table>
+		
+		
+	</section>
+
+
+</ion-content>
+
+
+<ion-footer>
+	<ion-toolbar>
+		<div class="foot"><img src="assets/imgs/walletPNG.png" alt="solde" /><h2>Solde actuel : {{ dataClientLocal.solde }} €</h2></div>
+	</ion-toolbar>
+</ion-footer>

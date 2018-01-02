@@ -1,0 +1,120 @@
+page-register 
+{
+
+	#registerBody
+	{
+		background-image: url("../../assets/imgs/font.jpg");
+		background-size: cover;
+    	background-position: 0px 50px;
+	}
+
+	#registerBody form
+	{
+		margin-top: 12%;
+		max-width: 800px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	#registerBody fieldset
+	{
+		border-radius: 5px;
+		border: none;
+		margin-bottom: 2%;
+	}
+
+	#registerBody legend
+	{
+		/*cursor: pointer;*/
+		width: 100%;
+		box-shadow: 2px 2px 5px #aaa;
+		background-color: rgba(102,204,0,0.9);
+		color: white;
+		padding: 5px 50px 5px 50px;
+		border-radius: 5px;
+		font-size: 1.8em;
+		text-shadow: 1px 1px 2px #555;
+	}
+ 
+	.registerFieldsetContent
+	{
+		box-shadow: 2px 2px 5px #aaa;
+		background-color: rgba(255,255,255,0.8);
+	}
+
+	#registerBody h3
+	{
+		margin-left: 10%;
+		font-size: 1.2em;
+		color: #66CC00;
+	}
+
+
+	.radioRegister
+	{
+		width: 40%;
+		display: inline-block;
+	}
+	
+	#submitRegister
+	{
+		width: 30%;
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 3%;
+		margin-bottom: 7%;
+	}
+
+	.requiredInput
+	{
+		color: white;
+		float: right;
+		font-size: 0.8em;
+		font-style: italic;
+	}
+
+
+
+	/* ///////////// MOBILE CSS ///////////////////*/
+	@media screen and (min-device-width: 1200px) 
+	{
+		#registerBody form
+		{
+			margin-top: 5%;
+		}
+
+		#registerBody legend
+		{
+			padding: 5px;
+			font-size: 1.3em;
+		}
+	}
+
+ 
+
+	/*ionic2-datepicker, ionic2-datepicker .datepicker-wrapper
+	{
+
+		background:linear-gradient(135deg, #172446 0%, #2a3c60 26%, #5393ae 61%, #5393ae 66%, #335e88 81%, #336084 100%);
+
+	    .datepicker-header
+	    {
+           background-color:rgba(0,0,0,0.25)!important;
+           .weekday-header{background-color:rgba(0,0,0,0.25)!important;}
+	    }
+
+	    .button
+	    { 
+	    	background-color:rgba(0,0,0,0.25)!important;
+	    }
+	    
+	    .row 
+	    {
+	        color:white!important;
+	        .datepicker-selected{color:black;}
+	         .datepicker-current{color:#bdbdbd;}
+	   }
+	}*/
+
+
+}

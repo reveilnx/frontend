@@ -1,0 +1,91 @@
+page-wallet 
+{
+
+	#walletBody
+	{
+		background: linear-gradient(to left top, #ecdfb4, rgb(255,255,255));
+	}
+
+	#walletBody form
+	{
+		max-width: 500px;
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 7%;
+	}
+
+	#walletBody div
+	{
+		text-align: center;
+	}
+
+		
+	#walletBody ion-item
+	{
+		box-shadow: 2px 2px 5px #aaa;
+		margin-bottom: 2%;
+	}
+
+	#walletBody h3
+	{
+		font-size: 0.8em;
+		text-align: center;
+		color: rgba(0,0,0,0.7);
+	}
+
+	#walletBody button
+	{
+		margin-top: 10%;
+		width: 60%;
+		margin-right: auto;
+		margin-left: auto;
+		box-shadow: 2px 2px 5px #aaa;
+	}
+
+	#choiceMoney
+	{
+		max-width: 700px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#choiceMoney button
+	{
+		width: 100% !important;
+		margin: 0px !important;
+	}
+
+	#choiceMoney ion-item
+	{
+		width: 40%;
+		border: 2px solid rgba(102,204,0,0.9);
+		border-radius: 5px;
+		background-color: rgba(255,255,255,0);
+		color: rgba(102,204,0,0.9);
+		display: inline-block;
+	}
+
+	#titleIban
+	{
+		width: 80% !important;
+		font-size: 1.2em;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+ 
+	/* ///////////// MOBILE CSS ///////////////////*/
+	@media only screen and (max-width: 1000px)
+	{
+		#titleIban
+		{
+			font-size: 1em !important;
+		}
+
+		#choiceMoney ion-item
+		{
+			font-size: 1em;
+			width: 90%;
+		}
+	}
+}

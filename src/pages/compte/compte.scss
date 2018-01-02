@@ -1,0 +1,116 @@
+page-compte 
+{
+	#compteBody
+	{
+		 background: linear-gradient(to left top, #ecdfb4, rgb(255,255,255));
+	}
+
+	.contentApp
+	{
+		margin-top: 4% !important;
+	}
+
+	#compteBody form
+	{
+		max-width: 700px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	#compteBody article
+	{
+		margin-bottom: 8%;
+	}
+
+	.headCard
+	{
+		background-color: rgba(0, 204, 102, 0.8);
+		text-align: center;
+	}
+
+	.headCard ion-card-header
+	{
+		color: white;
+		font-weight: bold; 
+		text-shadow: 1px 1px 2px #aaa;
+
+	}
+
+	.titleCard
+	{
+		background-color: rgba(0, 204, 102, 0.1);
+	}
+
+	.titleCard ion-card-header
+	{
+		color: rgba(0,0,0, 0.5);
+		font-weight: bold;
+	}
+
+	.standartCard span
+	{
+		float: right;
+	}
+
+	.uploadBtn
+	{
+		width: 92%;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		font-weight: bold;
+	}
+
+	.uploadBtn
+	{
+		box-shadow: 1px 1px 3px #aaa;
+	}
+
+	.imgCmpt
+	{
+		width: 5%; 
+		display: inline-block;
+		vertical-align: bottom;
+		margin-right: 5%;
+		padding: 0px;
+	}
+
+	#submitProfil
+	{
+		margin-bottom: 5%;
+	}
+
+
+
+	/* ///////////// MOBILE CSS ///////////////////*/
+	@media only screen and (max-width: 1200px)
+	{
+		.titleCard ion-card-header
+		{
+			font-size: 1em;
+		}
+
+		, .standartCard, button, input, label
+		{
+			font-size: 0.9em;
+		}
+
+		.imgCmpt
+		{
+			width: 8%; 
+		}
+
+		#dateExpi
+		{
+			margin-bottom: 0px;
+		}
+
+		#submitProfil
+		{
+			width: 95%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+}

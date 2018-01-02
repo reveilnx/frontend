@@ -1,0 +1,145 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Gérer mon compte</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="compteBody" >
+
+	<section class="contentApp">
+
+		<form [formGroup]="compteForm" >
+
+			<!-- INOFS PERSO -->
+			<article>
+				<ion-card class="headCard">
+					<ion-card-header>Informations Personnelles</ion-card-header>
+				</ion-card>
+
+				<ion-card class="standartCard">
+					<ion-card-content><span>{{ dataClientLocal.nom }}</span>Nom :</ion-card-content>
+				</ion-card>
+				<ion-card class="standartCard">
+					<ion-card-header><span>{{ dataClientLocal.prenom }}</span>Prénom :</ion-card-header>
+				</ion-card>
+				<ion-card class="standartCard">
+					<ion-card-header><span>+ {{ dataClientLocal.telephone }}</span>Téléphone :</ion-card-header>
+				</ion-card>
+				<ion-card class="standartCard">
+					<ion-card-header><span>{{ dataClientLocal.email }}</span>Email :</ion-card-header>
+				</ion-card>
+			</article>
+
+
+
+			<!-- DOCUMENTS D'IDENTITE -->
+			<!--<article>
+				<ion-card class="headCard">
+					<ion-card-header>Documents d'identité</ion-card-header>
+				</ion-card>
+
+				<ion-card showWhen="core" [class.invalid]="!compteForm.controls.photocopieID.valid && (compteForm.controls.photocopieID.dirty || submitAttempt)">
+					<ion-item >
+					<ion-label>Carte d'identité : </ion-label>
+					<ion-input type="file" name="photocopieID" formControlName="photocopieID"  ></ion-input>
+					</ion-item>
+				</ion-card>
+				<button showWhen="android, ios, windows" ion-button icon-left color="secondary" outline (click)="chargeImg(photocopieID)" class="uploadBtn" [class.invalid]="!compteForm.controls.photocopieID.valid && (compteForm.controls.photocopieID.dirty || submitAttempt)"><ion-icon name="camera"></ion-icon>Carte d'identité</button>-
+				<ion-card id="dateExpi" [class.invalid]="!compteForm.controls.expirationID.valid && (compteForm.controls.expirationID.dirty || submitAttempt)">
+					<ion-item>
+					<ion-label>Date d'expiration ID : </ion-label>
+					<ion-input type="text" name="expirationID" placeholder="DD/MM/AAAA" formControlName="expirationID" ></ion-input>
+					</ion-item>
+				</ion-card>
+				<ion-card [class.invalid]="!compteForm.controls.justifDomicile.valid && (compteForm.controls.justifDomicile.dirty || submitAttempt)" >
+					<ion-item showWhen="core">
+					<ion-label>Justif domicile : </ion-label>
+					<ion-input type="file" name="justifDomicile" formControlName="justifDomicile" ></ion-input>
+					</ion-item>
+				</ion-card>
+				<button showWhen="android, ios, windows" ion-button icon-left color="secondary" outline (click)="chargeImg(justifDomicile)" class="uploadBtn" [class.invalid]="!compteForm.controls.justifDomicile.valid && (compteForm.controls.justifDomicile.dirty || submitAttempt)"><ion-icon name="camera"></ion-icon>Justif. Domicile</button>
+
+			</article>-->
+			
+
+
+			<!-- INOFS PERSO -->
+			<article>
+				<ion-card class="headCard">
+					<ion-card-header>Coordonnées Bancaires</ion-card-header>
+				</ion-card>
+
+				<!-- compte FR -->
+				<ion-card class="titleCard">
+						<ion-card-header><img class="imgCmpt" src="assets/imgs/frenchFlag.png" alt="frenchAccount"/>Compte français</ion-card-header>
+				</ion-card>
+ 
+				<!--<ion-card showWhen="core" [class.invalid]="!compteForm.controls.RIBfrance.valid && (compteForm.controls.RIBfrance.dirty || submitAttempt)">
+					<ion-item>
+					<ion-label>RIB : </ion-label>
+					<ion-input type="file" name="RIBfrance" formControlName="RIBfrance" ></ion-input>
+					</ion-item>
+				</ion-card>
+				<button ion-button showWhen="android, ios, windows" icon-left color="secondary" outline (click)="chargeImg(RIBfrance)" class="uploadBtn" [class.invalid]="!compteForm.controls.RIBfrance.valid && (compteForm.controls.RIBfrance.dirty || submitAttempt)"><ion-icon name="camera"></ion-icon>RIB</button>-->
+				<ion-card formControlName="IBANfrance" [class.invalid]="!compteForm.controls.IBANfrance.valid && (compteForm.controls.IBANfrance.dirty || submitAttempt)">
+					<ion-item>
+					<ion-label>IBAN : </ion-label>
+					<ion-input type="text" name="IBANfrance" value="{{ dataClientLocal.IBANfrance }}" ></ion-input>
+					</ion-item>
+				</ion-card>
+				<ion-card  [class.invalid]="!compteForm.controls.BICfrance.valid && (compteForm.controls.BICfrance.dirty || submitAttempt)">
+					<ion-item>
+					<ion-label>BIC : </ion-label>
+					<ion-input type="text" name="BICfrance" value="{{ dataClientLocal.BICfrance }}" formControlName="BICfrance"></ion-input>
+					</ion-item>
+				</ion-card>
+				
+				<!-- compte AFR -->
+				<!--<ion-card class="titleCard">
+					<ion-card-header><img class="imgCmpt" src="assets/imgs/africanFlag.png" alt="africanAccount/> Compte africain</ion-card-header>
+				</ion-card>
+
+				<ion-card showWhen="core" [class.invalid]="!compteForm.controls.RIBafrique.valid && (compteForm.controls.RIBafrique.dirty || submitAttempt)">
+					<ion-item>
+					<ion-label>RIB : </ion-label>
+					<ion-input type="file" name="RIBafrique" formControlName="RIBafrique" ></ion-input>
+					</ion-item>
+				</ion-card>
+				<button ion-button showWhen="android, ios, windows" icon-left color="secondary" outline (click)="chargeImg(RIBafrique)" class="uploadBtn" [class.invalid]="!compteForm.controls.RIBafrique.valid && (compteForm.controls.RIBafrique.dirty || submitAttempt)"><ion-icon name="camera"></ion-icon>RIB</button>
+				<ion-card [class.invalid]="!compteForm.controls.IBANafrique.valid && (compteForm.controls.IBANafrique.dirty || submitAttempt)">
+					<ion-item>
+					<ion-label>IBAN : </ion-label>
+					<ion-input type="text" name="IBANafrique" value="FR76 7865 4548 5656 6564 098" formControlName="IBANafrique" ></ion-input>
+					</ion-item>
+				</ion-card>
+				<ion-card [class.invalid]="!compteForm.controls.BICafrique.valid && (compteForm.controls.BICafrique.dirty || submitAttempt)">
+					<ion-item>
+					<ion-label>BIC : </ion-label>
+					<ion-input type="text" name="BICafrique" value="BNPAFRPP751" formControlName="BICafrique" ></ion-input>
+					</ion-item>
+				</ion-card>-->
+			</article>
+		
+
+		<button ion-button block color="secondary" id="submitProfil" (click)="uploadUser()">Modifier</button>	
+		</form>
+		
+		
+
+	</section> 
+
+
+
+</ion-content>
+
+
+
+<ion-footer class="footer">
+	<ion-toolbar >
+		<div class="foot"><img src="assets/imgs/walletPNG.png" alt="solde"/><h2>Solde actuel : {{ dataClientLocal.solde }} €</h2></div>
+	</ion-toolbar>
+</ion-footer>

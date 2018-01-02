@@ -14,3 +14,82 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+ion-icon
+{
+	margin-right: 20px;
+}
+
+.sidebarIcon
+{
+	color: rgba(102,204,0,0.9);
+}
+
+.invalid
+{
+	border: 3px solid #ea6153;
+}
+
+.pInvalid
+{
+	color: white; 
+	width: 40%;
+	text-align: center;
+	padding: 2px;
+	background-color: #ea6153;
+	border-radius: 5px;
+	font-size: 1em; 
+	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.contentApp
+{
+	max-width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 5%;
+}
+
+
+
+.foot
+{
+	width: 90%;
+	text-align: center;
+	margin-left: auto;
+	margin-rigth: auto;
+}
+
+.foot img
+{
+	width: 40px;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	margin-right: 1%;
+	display: inline-block;
+}
+
+.foot h2
+{
+	vertical-align: top;
+	width: 30%;
+	font-size: 1.2em;
+	display: inline-block;
+}
+
+/* ///////////// MOBILE CSS ///////////////////*/
+	@media only screen and (max-width: 1000px)
+	{
+		.foot img
+		{
+			width: 30px !important;
+		}
+
+		.foot h2
+		{
+			width: 80% !important;
+			vertical-align: bottom;
+		}
+	}
