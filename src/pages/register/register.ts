@@ -97,7 +97,7 @@ export class RegisterPage
   private getStateISO()
   {
   	// charge State file text
-	this.rest.get('countries.json', false)
+	this.rest.get(this.rest.urlServer + "/getCountries.php", false)
 	.then(value => 
 	{
 		this.stateISO = value;
